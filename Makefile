@@ -1,6 +1,6 @@
 all: build
 
-build: build.stamp
+build: build.stamp res/jvec.png
 
 venv: venv/touchfile
 
@@ -18,6 +18,10 @@ venv/touchfile: requirements.txt
 	. venv/bin/activate; pip install -Ur requirements.txt
 	touch venv/touchfile
 
+res/jvec.png: fonts/8bitoperator_jvec.ttf
+	mkdir res
+	python preview.py
+
 clean:
-	rm -rf venv fonts build.stamp
+	rm -rf venv fonts res build.stamp
 
